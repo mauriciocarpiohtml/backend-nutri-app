@@ -7,10 +7,10 @@ const pacientesRouter = require('./routes/PacientesRouter')
 const controlRouter = require('./routes/controlRouter')
 
 const app = express()
-const PORT = process.env.PORT
 
 dotenv.config()
 
+const PORT = process.env.PORT
 //Procesar info de tipo json()
 app.use(express.json())
 
