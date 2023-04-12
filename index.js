@@ -7,7 +7,7 @@ const pacientesRouter = require('./routes/PacientesRouter')
 const controlRouter = require('./routes/controlRouter')
 
 const app = express()
-const port = process.env.URL
+const PORT = process.env.PORT
 
 dotenv.config()
 
@@ -28,6 +28,6 @@ app.use('/api/usuarios', nutricionistaRouter )
 app.use('/api/pacientes', pacientesRouter )
 app.use('/api/controles', controlRouter)
 
-app.listen(port, () => {
-  console.log(`Escuchando en el puerto ${port}`)
+app.listen(PORT, () => {
+  console.log(`Escuchando en el puerto ${PORT}`)
 })
