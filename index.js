@@ -7,7 +7,7 @@ const pacientesRouter = require('./routes/PacientesRouter')
 const controlRouter = require('./routes/controlRouter')
 
 const app = express()
-const port = 3010
+const port = process.env.URL
 
 dotenv.config()
 
