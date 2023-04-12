@@ -21,6 +21,9 @@ conectarDB()
 app.use(cors())
 
 // Rutas
+app.use('/', (req, res) =>{
+  res.json({msg: "Conectado de forma exitosa"})
+})
 app.use('/api/usuarios', nutricionistaRouter )
 app.use('/api/pacientes', pacientesRouter )
 app.use('/api/controles', controlRouter)
