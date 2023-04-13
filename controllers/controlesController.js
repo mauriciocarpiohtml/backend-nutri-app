@@ -26,9 +26,7 @@ async function obtenerControles(req, res) {
     }).populate('paciente');
 
     if (controlesPaciente) {
-        res.status(200).json({
-            controles: controlesPaciente
-        });
+        res.status(200).json(controlesPaciente)
     } else {
         res.status(404).json({
             mensaje: 'No se encontraron controles para el paciente especificado.'
