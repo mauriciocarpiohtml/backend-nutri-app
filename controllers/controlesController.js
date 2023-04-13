@@ -5,7 +5,7 @@ const {id} = req.params
 
 try {
     const controlAlmacenado = new control(req.body)
-    controlAlmacenado.doctor = req.nutricionista._id
+    controlAlmacenado.doctor = req.nutricionista
     controlAlmacenado.paciente = id
     await controlAlmacenado.save()
     res.status(200).json(controlAlmacenado)
@@ -18,9 +18,9 @@ try {
 async function obtenerControles(req, res){
     const {id} = req.params
     const controlesPaciente = await control.find({
-        doctor: req.nutricionista._id,
+        doctor: req.nutricionista,
         paciente: id
-    })
+    }).where('paciente').equals(id)
     res.status(200).json(controlesPaciente)
 }
 
