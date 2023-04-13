@@ -31,6 +31,7 @@ async function editarControl(req, res){
         res.status(404).json({msg: 'Control no encontrado'})
         return
     }
+    controlEditar.fecha = req.body.fecha || controlEditar.fecha
     controlEditar.pesoActual = req.body.pesoActual || controlEditar.pesoActual
     controlEditar.biceps = req.body.biceps || controlEditar.biceps
     controlEditar.cintura = req.body.cintura || controlEditar.cintura
