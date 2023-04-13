@@ -8,6 +8,7 @@ try {
     controlAlmacenado.doctor = req.nutricionista._id
     controlAlmacenado.paciente = id
     await controlAlmacenado.save()
+    console.log(controlAlmacenado)
     res.status(200).json(controlAlmacenado)
 
 } catch(error){
@@ -15,13 +16,24 @@ try {
 }
 }
 
+
+
 async function obtenerControles(req, res) {
-    const { id } = req.params
+    const { id } = req.params;
     const controlesPaciente = await control.find({
         doctor: req.nutricionista._id,
         paciente: id
-    });
-    res.status(200).json(controlesPaciente)
+    }).populate('paciente');
+
+    if (controlesPaciente) {
+        res.status(200).json({
+            controles: controlesPaciente
+        });
+    } else {
+        res.status(404).json({
+            mensaje: 'No se encontraron controles para el paciente especificado.'
+        });
+    }
 }
 
 async function editarControl(req, res){
