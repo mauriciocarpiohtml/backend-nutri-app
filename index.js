@@ -18,7 +18,16 @@ app.use(express.json())
 conectarDB()
 
 // Aceptar cors
-app.use(cors())
+
+// Configurar cors
+const corsOptions = {
+  origin: '*', // Permite cualquier origen
+  methods: 'GET,PUT,POST,DELETE', // Permitir estos métodos
+  allowedHeaders: 'Content-Type,Authorization', // Permitir estos encabezados
+};
+
+app.use(cors(corsOptions))
+
 
 // Rutas
 app.use('/api/usuarios', nutricionistaRouter )
